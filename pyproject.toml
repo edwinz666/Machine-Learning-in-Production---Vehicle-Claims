@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "machine learning in production - vehicle claims"
+name = "ML in Prod - Vehicle Claims"
 version = "0.1.0"
 description = ""
 authors = ["Edwin Zhu <edwinz.unimelb@gmail.com>"]
