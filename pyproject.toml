@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "machine learning in production - vehicle claims"
+version = "0.1.0"
+description = ""
+authors = ["Edwin Zhu <edwinz.unimelb@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+scikit-learn = "^1.5.2"
+pandas = "^2.2.2"
+polars = "^1.7.1"
+lightgbm = "^4.5.0"
+pydantic-settings = "^2.5.2"
+loguru = "^0.7.2"
+sqlalchemy = "^2.0.34"
+wemake-python-styleguide = "^0.19.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
