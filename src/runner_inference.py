@@ -25,17 +25,6 @@ def main():
     ml_svc = ModelInferenceService()
     ml_svc.load_model()
 
-    # feature_values = {
-    #     'area': 85,
-    #     'constraction_year': 2015,
-    #     'bedrooms': 2,
-    #     'garden_area': 20,
-    #     'balcony_present': 1,
-    #     'parking_present': 1,
-    #     'furnished': 0,
-    #     'garage_present': 0,
-    #     'storage_present': 1,
-    # }
     feature_values = pd.DataFrame([{
         'VehPower': 5,
         'VehAge': 0,

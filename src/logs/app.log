@@ -13,3 +13,18 @@
 2024-09-17 18:05:32.404 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
 2024-09-17 18:05:32.968 | INFO     | model.model_inference:predict:80 - making prediction!
 2024-09-17 18:05:32.972 | INFO     | __main__:main:53 - prediction = [2.48311601]
+2024-09-17 18:47:17.485 | INFO     | __main__:main:24 - running the application...
+2024-09-17 18:47:17.485 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
+2024-09-17 18:47:17.485 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
+2024-09-17 18:47:18.108 | INFO     | model.model_inference:predict:80 - making prediction!
+2024-09-17 18:47:18.112 | INFO     | __main__:main:53 - prediction = [2.48311601]
+2024-09-17 18:48:24.207 | INFO     | __main__:main:24 - running the application...
+2024-09-17 18:48:24.207 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
+2024-09-17 18:48:24.208 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
+2024-09-17 18:48:24.754 | INFO     | model.model_inference:predict:80 - making prediction!
+2024-09-17 18:48:24.757 | INFO     | __main__:main:42 - prediction = [2.48311601]
+2024-09-17 18:50:02.166 | INFO     | __main__:main:24 - running the application...
+2024-09-17 18:50:02.166 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
+2024-09-17 18:50:02.166 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
+2024-09-17 18:50:02.697 | INFO     | model.model_inference:predict:80 - making prediction!
+2024-09-17 18:50:02.701 | INFO     | __main__:main:42 - prediction = [2.48311601]
