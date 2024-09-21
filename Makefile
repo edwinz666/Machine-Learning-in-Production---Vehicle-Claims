@@ -18,8 +18,8 @@ clean:
 check:
 	poetry run flake8 src/
 
-# runner_builder: check run_builder clean
-runner_builder: run_builder clean
+runner_builder: check run_builder clean
+# runner_builder: run_builder clean
 
-# runner_inference: check run_inference clean
-runner_inference: run_inference clean
+runner_inference: check run_inference clean
+# runner_inference: run_inference clean

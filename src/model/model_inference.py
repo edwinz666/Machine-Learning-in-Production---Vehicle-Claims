@@ -78,5 +78,5 @@ class ModelInferenceService:
             list: The prediction result from the model.
         """
         logger.info('making prediction!')
-        # return self.model.predict([input_parameters])
+        # return self.model.predict([input_parameters])  # noqa: E800
         return self.model.predict(input_parameters)

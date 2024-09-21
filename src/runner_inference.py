@@ -36,8 +36,8 @@ def main():
         'VehGas': 'Regular',
         'Region': 'R82',
     }])
-       
-    # pred = ml_svc.predict(list(feature_values.values()))
+
+    # pred = ml_svc.predict(list(feature_values.values()))  # noqa: E800
     pred = ml_svc.predict(feature_values)
     logger.info(f'prediction = {pred}')
 

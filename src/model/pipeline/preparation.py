@@ -6,7 +6,6 @@ and parse specific columns for further processing.
 Some encodings may be handled by the model pipelines directly in model.py.
 """
 
-import re
 
 import pandas as pd
 from loguru import logger
@@ -28,9 +27,7 @@ def prepare_data() -> pd.DataFrame:
 
     return _encode_response(dataframe)
 
+
 def _encode_response(dataframe: pd.DataFrame) -> pd.DataFrame:
-    dataframe["Claim_Freq"] = dataframe["ClaimNb"]/dataframe["Exposure"]
+    dataframe['Claim_Freq'] = dataframe['ClaimNb']/dataframe['Exposure']
     return dataframe
-    
-
-

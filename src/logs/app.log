@@ -1,50 +1,5 @@
-2024-09-17 18:05:08.341 | INFO     | __main__:main:22 - running the application...
-2024-09-17 18:05:08.352 | INFO     | model.model_builder:train_model:37 - building the model config file at model\models/rf_db_v3
-2024-09-17 18:05:08.352 | INFO     | model.pipeline.model:build_model:37 - starting up model building pipeline
-2024-09-17 18:05:08.352 | INFO     | model.pipeline.preparation:prepare_data:26 - starting up preprocessing pipeline
-2024-09-17 18:05:08.352 | INFO     | model.pipeline.collection:load_data_from_db:28 - extracting the table from the database
-2024-09-17 18:05:08.362 | INFO     | model.pipeline.model:_get_x_y:90 - defining X and Y variables. X vars: ['VehPower', 'VehAge', 'DrivAge', 'BonusMalus', 'Density', 'Exposure', 'Area', 'VehBrand', 'VehGas', 'Region']; y var: Claim_Freq
-2024-09-17 18:05:08.365 | INFO     | model.pipeline.model:_split_train_test:108 - splitting data into train and test sets
-2024-09-17 18:05:08.367 | INFO     | model.pipeline.model:_train_model:149 - training a model with hyperparameters
-2024-09-17 18:05:22.686 | INFO     | model.pipeline.model:_evaluate_model:197 - evaluating model performance. SCORE=-0.030461430124559596
-2024-09-17 18:05:22.686 | INFO     | model.pipeline.model:_save_model:212 - saving a model to a directory: model\models/rf_db_v3
-2024-09-17 18:05:32.404 | INFO     | __main__:main:24 - running the application...
-2024-09-17 18:05:32.404 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
-2024-09-17 18:05:32.404 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
-2024-09-17 18:05:32.968 | INFO     | model.model_inference:predict:80 - making prediction!
-2024-09-17 18:05:32.972 | INFO     | __main__:main:53 - prediction = [2.48311601]
-2024-09-17 18:47:17.485 | INFO     | __main__:main:24 - running the application...
-2024-09-17 18:47:17.485 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
-2024-09-17 18:47:17.485 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
-2024-09-17 18:47:18.108 | INFO     | model.model_inference:predict:80 - making prediction!
-2024-09-17 18:47:18.112 | INFO     | __main__:main:53 - prediction = [2.48311601]
-2024-09-17 18:48:24.207 | INFO     | __main__:main:24 - running the application...
-2024-09-17 18:48:24.207 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
-2024-09-17 18:48:24.208 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
-2024-09-17 18:48:24.754 | INFO     | model.model_inference:predict:80 - making prediction!
-2024-09-17 18:48:24.757 | INFO     | __main__:main:42 - prediction = [2.48311601]
-2024-09-17 18:50:02.166 | INFO     | __main__:main:24 - running the application...
-2024-09-17 18:50:02.166 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
-2024-09-17 18:50:02.166 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
-2024-09-17 18:50:02.697 | INFO     | model.model_inference:predict:80 - making prediction!
-2024-09-17 18:50:02.701 | INFO     | __main__:main:42 - prediction = [2.48311601]
-2024-09-17 18:54:03.285 | INFO     | __main__:main:24 - running the application...
-2024-09-17 18:54:03.285 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
-2024-09-17 18:54:03.286 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
-2024-09-17 18:54:03.937 | INFO     | model.model_inference:predict:80 - making prediction!
-2024-09-17 18:54:03.941 | INFO     | __main__:main:42 - prediction = [2.48311601]
-2024-09-17 19:42:39.430 | INFO     | __main__:main:24 - running the application...
-2024-09-17 19:42:39.431 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
-2024-09-17 19:42:39.431 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
-2024-09-17 19:42:47.687 | INFO     | model.model_inference:predict:80 - making prediction!
-2024-09-17 19:42:47.692 | INFO     | __main__:main:42 - prediction = [2.48311601]
-2024-09-17 19:43:00.258 | INFO     | __main__:main:24 - running the application...
-2024-09-17 19:43:00.258 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
-2024-09-17 19:43:00.258 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
-2024-09-17 19:43:00.780 | INFO     | model.model_inference:predict:80 - making prediction!
-2024-09-17 19:43:00.784 | INFO     | __main__:main:42 - prediction = [2.48311601]
-2024-09-17 19:52:16.239 | INFO     | __main__:main:24 - running the application...
-2024-09-17 19:52:16.240 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
-2024-09-17 19:52:16.240 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
-2024-09-17 19:52:16.819 | INFO     | model.model_inference:predict:80 - making prediction!
-2024-09-17 19:52:16.823 | INFO     | __main__:main:42 - prediction = [2.48311601]
+2024-09-21 12:47:48.023 | INFO     | __main__:main:24 - running the application...
+2024-09-21 12:47:48.035 | INFO     | model.model_inference:load_model:47 - checking the existance of model config file at model\models/rf_db_v3
+2024-09-21 12:47:48.035 | INFO     | model.model_inference:load_model:59 - model rf_db_v3 exists! -> loading model configuration file
+2024-09-21 12:47:51.157 | INFO     | model.model_inference:predict:80 - making prediction!
+2024-09-21 12:47:51.166 | INFO     | __main__:main:42 - prediction = [2.48311601]

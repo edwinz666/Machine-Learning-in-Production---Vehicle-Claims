@@ -10,11 +10,11 @@ import pickle as pk
 
 import pandas as pd
 from loguru import logger
+from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV, train_test_split
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
 
 from config import model_settings
 from model.pipeline.preparation import prepare_data
@@ -35,27 +35,33 @@ def build_model() -> None:
         None
     """
     logger.info('starting up model building pipeline')
-    df = prepare_data()   
-    feature_names = ['VehPower', 'VehAge', 'DrivAge',
-       'BonusMalus', 'Density', 'Exposure',
-       'Area', 'VehBrand', 'VehGas', 'Region',
-       ]
+    df = prepare_data()
+    feature_names = [
+        'VehPower',
+        'VehAge',
+        'DrivAge',
+        'BonusMalus',
+        'Density',
+        'Exposure',
+        'Area',
+        'VehBrand',
+        'VehGas',
+        'Region',
+        ]
     response = 'Claim_Freq'
     X, y = _get_x_y(
         df,
         col_x=feature_names,
-        col_y=response
+        col_y=response,
     )
     X_train, X_test, y_train, y_test = _split_train_test(
         X,
         y,
-    )    
-    ## to be changed?
-    sample_weights_train = X_train["Exposure"].copy()
-    sample_weights_test = X_test["Exposure"].copy()
-    X_train = X_train.drop("Exposure", axis=1)
-    X_test = X_test.drop("Exposure", axis=1)
-    
+    )
+    sample_weights_train = X_train['Exposure'].copy()
+    sample_weights_test = X_test['Exposure'].copy()
+    X_train = X_train.drop('Exposure', axis=1)
+    X_test = X_test.drop('Exposure', axis=1)
     rf = _train_model(
         X_train,
         y_train,
@@ -112,28 +118,35 @@ def _split_train_test(
         test_size=0.2,  # noqa: WPS432
     )
 
+
 def create_pipeline():
+    """
+    Create the pipeline for the ML model.
+
+    Returns:
+        Pipeline: the pipeline for the ML model.
+    """
     # Define the categorical features
     categorical_features = ['Area', 'VehBrand', 'VehGas', 'Region']
 
     # Create a ColumnTransformer to apply OneHotEncoder to categorical features
     preprocessor = ColumnTransformer(
         transformers=[
-            ('cat', OneHotEncoder(), categorical_features)
+            ('cat', OneHotEncoder(), categorical_features),
         ])
 
-    # Define a pipeline that first preprocesses the data and then applies a model
-    pipeline = Pipeline(steps=[
+    # Return a pipeline that first preprocesses the data
+    # and then applies a model
+    return Pipeline(steps=[
         ('preprocessor', preprocessor),
-        ('model', RandomForestRegressor())
+        ('model', RandomForestRegressor()),
     ])
-    
-    return pipeline
-    
+
+
 def _train_model(
     X_train: pd.DataFrame,
     y_train: pd.Series,
-    pipeline,
+    pipeline: Pipeline,
     sample_weights: pd.Series = None,
 ):
     """
@@ -142,12 +155,14 @@ def _train_model(
     Args:
         X_train (pd.DataFrame): Training set features.
         y_train (pd.Series): Training set target.
+        pipeline (Pipeline): The pipeline for the model.
+        sample_weights (pd.Series): Sample weights for the observations.
 
     Returns:
         RandomForestRegressor: The best estimator after GridSearch.
     """
     logger.info('training a model with hyperparameters')
-    
+
     # need the prefix to reference the step in the pipeline
     grid_space = {
         'model__n_estimators': [100, 200, 300],
@@ -161,19 +176,19 @@ def _train_model(
         cv=5,
         scoring='r2',
     )
-    
+
     fit_params = {'model__sample_weight': sample_weights}
     model_grid = grid.fit(
         X_train,
         y_train,
-        # sample_weight=sample_weights,  # does not work?
-        **fit_params
+        # sample_weight=sample_weights,  # does not work?  # noqa: E800
+        **fit_params,
     )
     return model_grid.best_estimator_
 
 
 def _evaluate_model(
-    model, # should be a pipeline?
+    model,
     X_test: pd.DataFrame,
     y_test: pd.Series,
     sample_weights,
@@ -182,9 +197,10 @@ def _evaluate_model(
     Evaluate the trained model's performance.
 
     Args:
-        model (RandomForestRegressor): The trained model.
+        model: The trained model or pipeline.
         X_test (pd.DataFrame): Testing set features.
         y_test (pd.Series): Testing set target.
+        sample_weights (pd.Serpes): The weights of the test observations.
 
     Returns:
         float: The model's score.

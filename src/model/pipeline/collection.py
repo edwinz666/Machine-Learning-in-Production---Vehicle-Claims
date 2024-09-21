@@ -8,7 +8,6 @@ analysis or processing. It uses SQLAlchemy for executing database queries
 and pandas for handling the data in a DataFrame format.
 """
 
-import sqlite3
 
 import pandas as pd
 from loguru import logger
@@ -31,4 +30,3 @@ def load_data_from_db() -> pd.DataFrame:
         query,
         engine,
     )
-

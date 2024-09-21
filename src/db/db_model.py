@@ -1,7 +1,7 @@
 """
 This module defines the database models using SQLAlchemy.
 
-The module uses SQLAlchemy's ORM capabilities to map Python 
+The module uses SQLAlchemy's ORM capabilities to map Python
 classes to database tables.
 The structure and fields of the Freq class are configured
 to match the corresponding database for insurance claims.
@@ -12,9 +12,10 @@ variables)
 """
 
 import os
+import sqlite3
 
 import pandas as pd
-import sqlite3
+from loguru import logger
 from sqlalchemy import INTEGER, REAL, VARCHAR
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -39,12 +40,13 @@ class Freq(Base):
         • VehPower: power of the car (categorical, ordinal)
         • VehAge: age of the car in years
         • DrivAge: age of the (most common) driver in years
-        • BonusMalus: bonus-malus level between 50 and 230 (with reference level 100)
+        • BonusMalus: bonus-malus level between 50 and 230
+            (with reference level 100)
         • VehBrand: car brand (categorical, nominal)
     """
 
     __tablename__ = db_settings.table_name
-    
+
     IDpol: Mapped[str] = mapped_column(INTEGER(), primary_key=True)
     ClaimNb: Mapped[float] = mapped_column(INTEGER())
     Exposure: Mapped[int] = mapped_column(REAL())
@@ -60,32 +62,37 @@ class Freq(Base):
 
 
 def csv_to_sqlite(
-    csv_file_path=db_settings.csv_data_filename, 
-    sqlite_db_path=db_settings.db_create_path, 
-    table_name=db_settings.table_name,
-    ) -> None:
+    csv_file_path: str = db_settings.csv_data_filename,
+    sqlite_db_path: str = db_settings.db_create_path,
+    table_name: str = db_settings.table_name,
+) -> None:  # noqa: DAR101
     """
-    Example of exporting to a csv to sqlite, and then
-    using it as part of a machine learning pipeline
+    Read in a csv and export to sqlite.
+
+    This is used as an example of a database for use as
+    part of a machine learning pipeline.
     """
     # Read CSV file into DataFrame
     df = pd.read_csv(csv_file_path)
-    
+
     # Connect to SQLite database (or create it if it doesn't exist)
     conn = sqlite3.connect(sqlite_db_path)
-    
+
     # Write the DataFrame to SQLite database
     df.to_sql(
-        name=table_name, 
-        con=conn, 
-        # if_table_exists='replace', 
+        name=table_name,
+        con=conn,
+        # if_table_exists='replace',  # noqa: E800
     )
-    
+
     # Commit changes and close connection
     conn.commit()
     conn.close()
-    
-    print(f"Data from {csv_file_path} has been written to {sqlite_db_path} in table {table_name}.")
+
+    logger.info(
+        f'Data from {csv_file_path} has been written to '
+        f'{sqlite_db_path} in table {table_name}.',
+    )
 
 
 # output supplied CSV to a sqlite database if the database doesn't exist
