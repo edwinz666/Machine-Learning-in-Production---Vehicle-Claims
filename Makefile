@@ -10,10 +10,11 @@ run_inference: install
 install: pyproject.toml
 	poetry install
 
-# clean:
-# 	rm -rf `find . -type d -name __pycache__`
 clean:
-	powershell -Command "Get-ChildItem -Recurse -Directory -Filter '__pycache__' | Remove-Item -Recurse -Force"
+	rm -rf `find . -type d -name __pycache__`
+# POWERSHELL version below
+# clean:
+# 	powershell -Command "Get-ChildItem -Recurse -Directory -Filter '__pycache__' | Remove-Item -Recurse -Force"
 
 check:
 	poetry run flake8 src/
