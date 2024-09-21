@@ -8,5 +8,6 @@ End-to-end machine learning project to illustrate the following in Python:
 6. Use of linters to check code formatting
 7. Makefile to automate the build process
 8. CI/CD pipelines with Github Actions
+9. Using microservices over monolithic architecture
 
 The data used is a subset from the French Motor Claims Datasets 'freMTPL2freq' from Kaggle.
